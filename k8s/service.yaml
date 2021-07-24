@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: node-sample-app
+    app.kubernetes.io/instance: node-sample-app-instance
+    app.kubernetes.io/name: node-sample-app
+  name: node-sample-app
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app.kubernetes.io/instance: node-sample-app-instance
+    app.kubernetes.io/name: node-sample-app
+  sessionAffinity: None
+  type: ClusterIP
